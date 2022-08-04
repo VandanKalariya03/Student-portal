@@ -3,11 +3,11 @@ import "../style.css"
 
 export const Login = () => {
 
-    let history = useHistory ();
+    // let history = useHistory ();
    
-    const [username,setUsername]=useState();
+    const [id,setId]=useState();
     const [password,setPassword]=useState();
-    console.log(username);
+    console.log(id);
     
     
     const LoginUser = async(e) => {
@@ -19,7 +19,7 @@ export const Login = () => {
                 "Content-Type":"application/json"
             },
             body: JSON.stringify({
-                username,password
+                id,password
             })
         })
         
@@ -28,7 +28,7 @@ export const Login = () => {
             alert("invalid")
         }else if (res.status===200) {
             alert("sucess")
-            // history.push("./navbar")
+            // history.push("./navbar")`Q3
         }
     }
 
@@ -44,7 +44,7 @@ export const Login = () => {
                 <label htmlFor="uname">
                     <b>Username</b>
                 </label>
-                <input type="text" placeholder="Enter Username" name="username" onChange={(e)=>{ setUsername(e.target.value) }} required="" />
+                <input type="text" placeholder="Enter Username" name="id" onChange={(e)=>{ setId(e.target.value) }} required="" />
                 <label htmlFor="psw">
                     <b>Password</b>
                 </label>
