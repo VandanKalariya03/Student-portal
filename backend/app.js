@@ -1,12 +1,18 @@
 const express = require('express');
 const { mongoose } = require('mongoose');
 const conn=require("./conn/conn.js");
+var fs = require('fs');
+var path = require('path');
+var multer = require('multer');
+var imgModel = require('./model/img');
+
 conn();
 const Student = require('./model/Student.js');
 const User=require("./model/user")
 const app=express();
 
 var cookieParser = require('cookie-parser');
+const { log } = require('console');
 app.use(cookieParser());
 const port=process.env.PORT || 5000;
 
@@ -29,29 +35,36 @@ app.post("/newstudent",(req,res)=>{
     
 })
 
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
     
         const { id, password } = req.body;
        
     try {
         
         
-        User.findOne({ id: id }, (err, doc) => {
+        const doc = await User.findOne({ id: id })
+        if (doc) {
+            
             console.log(doc);
             if (password==doc.password) {
                 res.status(200).cookie("id",req.body.id).json({"DCcsd":"login success"})
+                console.log("login success");
                
                 
             }else{
                 res.status(400).json({"sdc":"invalid"})
-
+                console.log("invalid");
+                
             }
-            console.log(err);
+        }else{
+            res.status(400).json({"sdc":"invalid"})
+            console.log("invalid");
+            conxsole.log(err);
+        }
           
-        });
-       
+   
     } catch (error) {
-        // console.log(error);
+        console.log(error);
     } 
 
     
@@ -86,8 +99,7 @@ app.post("/studentInfo", (req, res) => {
 app.post("/studentInfo2", async (req, res) => {
     
         const { Address,City,Number } = req.body;
-        // const id2=req.cookies;
-        const id2="20dce043";
+        const id2=req.cookies.id;
         console.log(id2);
     try {
      
@@ -105,10 +117,22 @@ app.post("/studentInfo2", async (req, res) => {
         
     } catch (err) {
         console.log(err);
-    } 
-
-    
+    }     
 })
+
+
+app.get("/studentInfo", async (req, res) => {   
+
+    const id2=req.cookies.id;
+    console.log(id2);
+    try {
+        const StudentLogin = await Student.findOne({id:id2});
+        console.log(StudentLogin);
+        res.status(200).json(StudentLogin)
+    } catch (err) {
+        console.log(err);
+    }     
+});
 
 
 

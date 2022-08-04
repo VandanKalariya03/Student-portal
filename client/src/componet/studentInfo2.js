@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export const StudentInfo2 = () => {
 
@@ -9,7 +9,33 @@ export const StudentInfo2 = () => {
 
     
 
+    const fillInfo = async() => {  
+      const res = await fetch('/studentinfo',{
+        method:"GET",
+        headers:{
+          Accept:"application/json",
+            "Content-Type":"application/json"
+        },
+        credentials:"include"
+    });
+    
+      const data = await res.json();
+      if (res.status===200) {
+        setAddress(data.Address);
+        setCity(data.City);
+        setNumber(data.Number);
 
+      }
+        
+      
+    }
+  
+    
+  useEffect(() => {
+  
+   fillInfo(); 
+  
+  }, []);
     const submitAPI2 = async(event) => {
         event.preventDefault();
         const res = await fetch('/studentinfo2',{

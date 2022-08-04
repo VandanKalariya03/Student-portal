@@ -1,13 +1,14 @@
-import React, { useState,useHistory } from 'react'
+import React, { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
+
 import "../style.css"
 
 export const Login = () => {
-
-    // let history = useHistory ();
-   
-    const [id,setId]=useState();
-    const [password,setPassword]=useState();
-    console.log(id);
+    
+    let history = useNavigate();    
+    
+    const [id,setId]=useState("");
+    const [password,setPassword]=useState("");
     
     
     const LoginUser = async(e) => {
@@ -23,12 +24,14 @@ export const Login = () => {
             })
         })
         
-
+        
         if(res.status===400){
             alert("invalid")
+            console.log("invaild");
         }else if (res.status===200) {
             alert("sucess")
-            // history.push("./navbar")`Q3
+            console.log("login");
+            history("/navbar");
         }
     }
 

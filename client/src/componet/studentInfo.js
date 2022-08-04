@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 
 export const StudentInfo = () => {
 
@@ -8,7 +8,33 @@ export const StudentInfo = () => {
     const [Email,setEmail]=useState();
 
 
+  const fillInfo = async() => {  
+    const res = await fetch('/studentinfo',{
+      method:"GET",
+      headers:{
+        Accept:"application/json",
+          "Content-Type":"application/json"
+      },
+      credentials:"include"
+  });
+  
+    const data = await res.json();
+    if (res.status===200) {
+      setId(data.id);
+      setFirstName(data.FirstName);
+      setLastName(data.LastName);
+      setEmail(data.Email);
+    }
+      
     
+  }
+
+  
+useEffect(() => {
+
+ fillInfo(); 
+
+}, []);
 
 
     const submitAPI = async(event) => {
