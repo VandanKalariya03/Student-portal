@@ -2,6 +2,7 @@ import React,{ useState } from 'react'
 import { StudentInfo } from './studentInfo'
 import { StudentInfo2 } from './studentInfo2'
 
+
 export const Navbar = () => {
     return (
         <>

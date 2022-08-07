@@ -71,11 +71,15 @@ app.post("/login", async (req, res) => {
 
 })
 
-app.post("/studentInfo", (req, res) => {
+app.post("/studentInfo", async (req, res) => {
     
         const { id,Email, FirstName,LastName } = req.body;
     try {
         
+        const StudentLogin = await Student.findOne({ id: id });
+    if (!StudentLogin) {
+         
+     
         let newUser = new Student({
             id: id,
             Email: Email,       
@@ -89,6 +93,12 @@ app.post("/studentInfo", (req, res) => {
             if (err) console.log(err)
             else res.status(201).json(reslut)
         })
+    }else{
+        const ress2=await StudentLogin.AddInfo(req.body);
+        console.log("added");
+       
+        res.status(200).json({"success":"wdcw"})
+    }
     } catch (err) {
         console.log(err);
     } 
@@ -103,10 +113,10 @@ app.post("/studentInfo2", async (req, res) => {
         console.log(id2);
     try {
      
-        const StudentLogin = await Student.findOne({id:id2});
+        const StudentLogin2 = await Student.findOne({id:id2});
         
-        console.log(StudentLogin);
-        const resss=await StudentLogin.ADDff(req.body);
+        console.log(StudentLogin2);
+        const resss=await StudentLogin2.AddInfo2(req.body);
         console.log("added");
        
         res.status(200).json({"success":"wdcw"})

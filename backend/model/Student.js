@@ -16,7 +16,7 @@ const student = new Schema({
         type: String
     },
 
-    
+
     Address: {
         type: String
     },
@@ -26,22 +26,39 @@ const student = new Schema({
     Number: {
         type: String
     }
-   
+
 })
 
-student.methods.ADDff = async function(body) {
+student.methods.AddInfo2 = async function (body) {
 
     try {
-       console.log(body);
-       this.Address=body.Address;
-       this.City=body.City;
-       this.Number=body.Number
-       
-       await this.save();
-    
-       
+        console.log(body);
+        this.Address = body.Address;
+        this.City = body.City;
+        this.Number = body.Number
+
+        await this.save();
+
+
     } catch (err) {
-        
+
+    }
+
+}
+student.methods.AddInfo = async function (body) {
+
+    try {
+        console.log(body);
+        this.id = body.id;
+        this.Email = body.Email;
+        this.FirstName = body.FirstName;
+        this.LastName = this.LastName;
+
+        await this.save();
+
+
+    } catch (err) {
+
     }
 
 }
@@ -49,4 +66,4 @@ const Student = mongoose.model('student', student)
 
 
 
-module.exports =Student;
+module.exports = Student;

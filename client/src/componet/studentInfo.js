@@ -1,11 +1,14 @@
 import React, { useState ,useEffect} from "react";
+import { useCookies } from 'react-cookie';
 
 export const StudentInfo = () => {
 
+    const [cookies, setCookie] = useCookies(['id']);
     const [id,setId]=useState();
     const [FirstName,setFirstName]=useState();
     const [LastName,setLastName]=useState();
     const [Email,setEmail]=useState();
+
 
 
   const fillInfo = async() => {  
@@ -76,7 +79,7 @@ useEffect(() => {
                     onChange={(e)=>{
                         setId(e.target.value)
                     }}
-                    value={id}
+                    value={cookies.id}
                     id="username"
                     placeholder="user.name"
                     name="ID"
