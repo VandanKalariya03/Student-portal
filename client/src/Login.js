@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 
-import "../style.css"
+
 
 export const Login = () => {
     
@@ -31,7 +31,7 @@ export const Login = () => {
         }else if (res.status===200) {
             alert("sucess")
             console.log("login");
-            history("/navbar");
+            history("/Profile");
         }
     }
 

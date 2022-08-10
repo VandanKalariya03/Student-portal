@@ -1,0 +1,149 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* LOGIN PAGE START*/
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+  text-align: center;
+}
+
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 12 px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #1c0071;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+
+.container {
+  padding: 16px;
+  width: 500px;
+  border: solid black 1px;
+  border-radius: 20px;
+  margin: auto;
+  margin-left: 75%;
+  margin-top: 25%;
+}
+
+
+.forgot_psw {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/*LOGIN PAGE END*/
+
+/*NAVBAR START*/
+header {
+  display: flex;
+  justify-content: space-between;
+ 
+}
+
+.nav_logo img {
+  margin-top: 0.5vh;
+  margin-left: 1vw;
+  width: 125px;
+}
+
+.nav_details ul {
+  padding: 3vh 3vw;
+  display: flex;
+  list-style: none;
+  margin-right: 2vw;
+}
+
+.nav_details li {
+  margin-left: 4vh;
+}
+
+.nav_details li a {
+  padding: 2vh 1.5vh;
+  margin: 3px;
+  color: #449AB3;
+    /*#6FA1D2*/
+    transition: all ease-in-out 200ms;
+  
+}
+
+.nav_details li a:hover {
+  background-color: #449AB3;
+  color: white;
+  border-radius: 15px;
+  padding: 2vh 1.5vh;
+  /* margin: 10px; */
+}
+
+/*NAVBAR END*/
+
+/*STUDENT INFO START*/
+.student_photo img {
+  border-radius: 75%;
+  position: absolute;
+  top: 9.3vh;
+  left: 70.3vw;
+  width: 340px;
+  height: 290px;
+}
+
+.sw {
+  background-color: white;
+  border-radius: 75%;
+  position: absolute;
+  left: 70vw;
+  top: 8.5vh;
+  width: 350px;
+  height: 300px;
+}
+.student_info
+{
+
+  color: black;
+  position: absolute;
+  top:14vh;
+  left: 8vw;
+  text-align: center;
+  border:2px solid black;
+  width:70vh;
+  height: 30vh;
+ 
+}
+.student
+{
+  margin-top: 1vh;
+  background-color: #449AB3;
+  width: 100vw; 
+  height: 60vh;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+/*STUDENT INFO END*/

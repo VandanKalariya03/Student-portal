@@ -2,62 +2,62 @@ import React, { useState, useEffect } from "react";
 
 export const StudentInfo2 = () => {
 
-    const [Address,setAddress]=useState();
-    const [City,setCity]=useState();
-    const [Number,setNumber]=useState();
+  const [Address, setAddress] = useState();
+  const [City, setCity] = useState();
+  const [Number, setNumber] = useState();
 
 
-    
 
-    const fillInfo = async() => {  
-      const res = await fetch('/studentinfo',{
-        method:"GET",
-        headers:{
-          Accept:"application/json",
-            "Content-Type":"application/json"
-        },
-        credentials:"include"
+
+  const fillInfo = async () => {
+    const res = await fetch('/studentinfo', {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
     });
-    
-      const data = await res.json();
-      if (res.status===200) {
-        setAddress(data.Address);
-        setCity(data.City);
-        setNumber(data.Number);
 
-      }
-        
-      
+    const data = await res.json();
+    if (res.status === 200) {
+      setAddress(data.Address);
+      setCity(data.City);
+      setNumber(data.Number);
+
     }
-  
-    
+
+
+  }
+
+
   useEffect(() => {
-  
-   fillInfo(); 
-  
-  }, []);
-    const submitAPI2 = async(event) => {
-        event.preventDefault();
-        const res = await fetch('/studentinfo2',{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify({
-               Address,City,Number
-            })
-        })
-        
 
-        if(res.status==400){
-            alert("invalid")
-        }else if (res.status==200) {
-            alert("Data add successfully")
-        }
+    fillInfo();
+
+  }, []);
+  const submitAPI2 = async (event) => {
+    event.preventDefault();
+    const res = await fetch('/studentinfo2', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        Address, City, Number
+      })
+    })
+
+
+    if (res.status == 400) {
+      alert("invalid")
+    } else if (res.status == 200) {
+      alert("Data add successfully")
     }
+  }
   return (
     <>
-      <div classname="card shadow">
+      {/* <div classname="card shadow">
         <div classname="card-header py-3">
           <p classname="text-primary m-0 fw-bold">Contact Settings</p>
         </div>
@@ -72,8 +72,8 @@ export const StudentInfo2 = () => {
                 type="text"
                 id="address"
                 value={Address}
-                onChange={(e)=>{
-                    setAddress(e.target.value);
+                onChange={(e) => {
+                  setAddress(e.target.value);
                 }}
                 placeholder="Sunset Blvd, 38"
                 name="address"
@@ -90,8 +90,8 @@ export const StudentInfo2 = () => {
                     type="text"
                     id="city"
                     value={City}
-                    onChange={(e)=>{
-                        setCity(e.target.value);
+                    onChange={(e) => {
+                      setCity(e.target.value);
                     }}
                     placeholder="Los Angeles"
                     name="city"
@@ -108,8 +108,8 @@ export const StudentInfo2 = () => {
                     type="text"
                     id="country"
                     value={Number}
-                    onChange={(e)=>{
-                        setNumber(e.target.value);
+                    onChange={(e) => {
+                      setNumber(e.target.value);
                     }}
                     placeholder="USA"
                     name="number"
@@ -124,7 +124,48 @@ export const StudentInfo2 = () => {
             </div>
           </form>
         </div>
+      </div> */}
+
+
+
+      <div classname="user_contact_setting">
+        <div classname="user_contact_setting_nav">
+          <h2>Contact Settings</h2>
+        </div>
+        <form classname="user-form" action="">
+          <div>
+            <label htmlfor="">Contact No </label> <br />
+            <input type="text" onChange={(e) => {
+              setNumber(e.target.value);
+            }} value={Number} placeholder="Contact No" />
+          </div>
+          <div>
+            <label htmlfor="">Address</label>
+            <br />
+            <input type="text" onChange={(e) => {
+              setAddress(e.target.value);
+            }} value={Address} placeholder="Address" />
+          </div>
+          <div>
+            <label htmlfor="">City</label>
+            <br />
+            <input type="text" onChange={(e) => {
+              setCity(e.target.value);
+            }} 
+            value={City}
+            placeholder="City" />
+          </div>
+          {/* <div>
+            <label htmlfor="">Country</label>
+            <br />
+            <input type="text" onChange={(e) => {
+              setAddress(e.target.value);
+            }} placeholder="Country" />
+          </div> */}
+        </form>
+        <button onClick={submitAPI2} >Save Settings</button>
       </div>
+
     </>
   );
 };
