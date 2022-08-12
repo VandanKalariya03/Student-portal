@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import './../main.css'
 
 export const StudentInfo2 = () => {
 
   const [Address, setAddress] = useState();
   const [City, setCity] = useState();
   const [Number, setNumber] = useState();
+  const [Country, setCountry] = useState();
 
 
 
@@ -24,6 +26,7 @@ export const StudentInfo2 = () => {
       setAddress(data.Address);
       setCity(data.City);
       setNumber(data.Number);
+      setCountry(data.Country);
 
     }
 
@@ -44,7 +47,7 @@ export const StudentInfo2 = () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        Address, City, Number
+        Address, City, Number,Country
       })
     })
 
@@ -129,8 +132,8 @@ export const StudentInfo2 = () => {
 
 
       <div classname="user_contact_setting">
-        <div classname="user_contact_setting_nav">
-          <h2>Contact Settings</h2>
+        <div classname="user_contact_setting_nav nav1">
+          <h2 className="ad">Contact Settings</h2>
         </div>
         <form classname="user-form" action="">
           <div>
@@ -155,15 +158,19 @@ export const StudentInfo2 = () => {
             value={City}
             placeholder="City" />
           </div>
-          {/* <div>
+          <div>
             <label htmlfor="">Country</label>
             <br />
             <input type="text" onChange={(e) => {
-              setAddress(e.target.value);
-            }} placeholder="Country" />
-          </div> */}
+              setCountry(e.target.value);
+            }}
+            name="Country"
+            value={Country}
+
+            placeholder="Country" />
+          </div>
         </form>
-        <button onClick={submitAPI2} >Save Settings</button>
+        <button className="bcss" onClick={submitAPI2} >Save Settings</button>
       </div>
 
     </>

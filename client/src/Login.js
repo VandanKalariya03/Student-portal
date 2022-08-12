@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
+import './style.css'
 
 
 
@@ -47,11 +48,15 @@ export const Login = () => {
                 <label htmlFor="uname">
                     <b>Username</b>
                 </label>
-                <input type="text" placeholder="Enter Username" name="id" onChange={(e)=>{ setId(e.target.value) }} required="" />
+                    <br></br>
+                    <span>
+                <input type="textarea" placeholder="Enter Username" name="id" onChange={(e)=>{ setId(e.target.value) }} required="" />
+                </span>
+                    <br></br>
                 <label htmlFor="psw">
                     <b>Password</b>
                 </label>
-                <input type="password" placeholder="Enter Password" id="password" onChange={(e)=>{ setPassword(e.target.value) }}/>
+                <input type="password" placeholder="Enter Password" name="password" onChange={(e)=>{ setPassword(e.target.value) }}/>
                 <button type="button" onClick={LoginUser}>
                     Login
                 </button>

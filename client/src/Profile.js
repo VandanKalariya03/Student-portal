@@ -2,6 +2,7 @@ import React from 'react'
 import { Navbar } from './componet/Navbar'
 import { StudentInfo } from './componet/studentInfo'
 import { StudentInfo2 } from './componet/studentInfo2'
+import './main.css'
 
 export const Profile = () => {
     return (

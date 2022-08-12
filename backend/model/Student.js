@@ -25,6 +25,9 @@ const student = new Schema({
     },
     Number: {
         type: String
+    },
+    Country: {
+        type: String
     }
 
 })
@@ -35,7 +38,8 @@ student.methods.AddInfo2 = async function (body) {
         console.log(body);
         this.Address = body.Address;
         this.City = body.City;
-        this.Number = body.Number
+        this.Number = body.Number;
+        this.Country = body.Country;
 
         await this.save();
 

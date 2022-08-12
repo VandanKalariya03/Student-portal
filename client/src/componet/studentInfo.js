@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useCookies } from 'react-cookie';
+import './../main.css'
 
 export const StudentInfo = () => {
 
@@ -116,7 +117,7 @@ export const StudentInfo = () => {
             }} placeholder="Email Address" />
           </div>
         </form>
-        <button onClick={submitAPI}>Save Settings</button>
+        <button className="bcss" onClick={submitAPI}>Save Settings</button>
       </div>
 
 

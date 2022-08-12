@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { StudentInfo } from './studentInfo'
 import { StudentInfo2 } from './studentInfo2'
+import './../main.css'
 
 
 export const Navbar = () => {
@@ -12,10 +13,10 @@ export const Navbar = () => {
   </div>
   <ul>
     <li>
-      <i className="bi bi-speedometer2" /> <a href="#">Dashboard</a>
+      <i className="bi bi-speedometer2" /> <a href="Dashboard">Dashboard</a>
     </li>
     <li>
-      <i className="bi bi-person-lines-fill" /> <a href="#">Profile</a>
+      <i className="bi bi-person-lines-fill" /> <a href="Profile">Profile</a>
     </li>
     <li>
       <i className="bi bi-table" />
