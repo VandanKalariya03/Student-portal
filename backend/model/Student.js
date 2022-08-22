@@ -8,6 +8,8 @@ const student = new Schema({
     },
     Email: {
         type: String
+
+        
     },
     FirstName: {
         type: String
