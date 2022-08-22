@@ -66,7 +66,7 @@ export const StudentInfo = () => {
         <div className="user_settings_nav">
           <h2>User Settings</h2>
         </div>
-        <form className="user-form" action="">
+        <form className="user-form" action="POST">
           <div>
             <label htmlFor="firstName" className="user-form-labels">
               First Name{" "}

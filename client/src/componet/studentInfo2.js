@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './../main.css'
+import '../main.css'
 
 export const StudentInfo2 = () => {
 
@@ -131,11 +131,11 @@ export const StudentInfo2 = () => {
 
 
 
-      <div classname="user_contact_setting">
-        <div classname="user_contact_setting_nav nav1">
+      <div className="user_contact_setting">
+        <div className="user_contact_setting_nav nav1">
           <h2 className="ad">Contact Settings</h2>
         </div>
-        <form classname="user-form" action="">
+        <form className="user-form" action="POST">
           <div>
             <label htmlfor="">Contact No </label> <br />
             <input type="text" onChange={(e) => {

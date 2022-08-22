@@ -22,14 +22,14 @@ export const Navbar = () => {
       <i className="bi bi-table" />
       <a href="#">Table</a>
     </li>
-    <li>
+    {/* <li>
       <i className="bi bi-speedometer2" />
       <a href="#">Login</a>
     </li>
     <li>
       <i className="bi bi-speedometer2" />
       <a href="#">Register</a>
-    </li>
+    </li> */}
   </ul>
   <button className="nav-button">
     <svg

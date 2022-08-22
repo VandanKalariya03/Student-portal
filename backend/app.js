@@ -4,7 +4,7 @@ const conn=require("./conn/conn.js");
 var fs = require('fs');
 var path = require('path');
 var multer = require('multer');
-var imgModel = require('./model/img');
+var imageSchema = require('./model/imageSchema');
 
 conn();
 const Student = require('./model/Student.js');
@@ -20,7 +20,40 @@ const port=process.env.PORT || 5000;
 
 app.use(express.json());
 
-   
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.filename)    
+    }
+});
+var upload = multer({ storage: storage });
+app.post("/img", upload.single('test'), async (req,res)=>{
+try {
+    
+        const saveImg =new imageSchema({
+            name: req.body.name,
+            img:{
+                data:fs.readFileSync("uploads/"+req.file.filename),
+                contentType:"image/png"
+            }
+        })
+    
+        const vv= await saveImg.save()
+        if (vv) {
+            console.log("success");
+            res.send("success");
+        }else{
+            console.log("error");
+        }
+    
+} catch (error) {
+    console.log(error);
+}
+    
+    
+})
 
 app.post("/newstudent",(req,res)=>{
     let newUser = new User({
